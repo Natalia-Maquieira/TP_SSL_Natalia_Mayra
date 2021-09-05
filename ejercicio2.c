@@ -43,7 +43,8 @@ int resolverMultip(char termino[]){
   	char *token;
   	token = strtok(termino, "*");
     int contador=1;
-  	int nro;
+  	int nro; 
+     
     while(token!= NULL) 
    	{
             if (esDecimal(token)){
@@ -68,20 +69,22 @@ int resolverMultip(char termino[]){
 int main(int argc, char *argv[])
 {
     char operacion[80] = "3-4*7+3-5";
-    int resultado =0;
+    int resultado = 0;
 
   	char *token;
   	token = strtok(operacion, "+");
   	int nro;
+    int nroASumar;
 
     while(token!= NULL) 
    	{
             if (esDecimal(token)){
                 nro = atoi(token);
                 resultado += nro;}
-            else
-                resultado += resolverRestaYMultip(token);
-
+            else{
+                nroASumar = resolverRestaYMultip(token);
+                resultado += nroASumar;
+            }
       token = strtok(NULL, "+");
    	}
        printf("El resultado de la operacion es %d \n",resultado);
